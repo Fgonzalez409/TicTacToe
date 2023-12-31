@@ -1,4 +1,4 @@
-const board = [
+let board = [
   ['','',''],
   ['','',''],
   ['','',''],
@@ -43,7 +43,7 @@ const changeMarker = () => {
 
 // This "resetBoard" function is called when the user clicks on the "Restart" button.
 const resetBoard = () => {
- 
+  currentMarker ='X'
   const squares = document.getElementsByTagName("TD")
 
   // loops over the HTML Collection of TDs and clears out the Xs and Os
@@ -51,7 +51,7 @@ const resetBoard = () => {
     console.log(squares[i].id)
     squares[i].innerHTML = null
   }
-  board === [
+  board = [
     ['','',''],
     ['','',''],
     ['','',''],
@@ -60,9 +60,11 @@ const resetBoard = () => {
   const checkForWin = () => {
     if(horizontalWin() || verticalWin() || diagonalWin()) {
       window.alert(`Player ${currentMarker} won!`)
+      resetBoard()
     } else {
       changeMarker()
     }
+
   }
 
   const horizontalWin = () => {
